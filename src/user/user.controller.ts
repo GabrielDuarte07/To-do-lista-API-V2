@@ -94,8 +94,7 @@ export class UserController implements UserControllerProps {
     }
 
     const ext = img.filename.slice(img.filename.lastIndexOf("."));
-    const destination =
-      path.resolve(__dirname, "..", "..", "public", "images") + `/${idParam}${ext}`;
+    const destination = path.join(__dirname, "..", "uploads", `${idParam}${ext}`);
     await fs.writeFile(destination, img.file);
     await this.defaultProps.connection.user.update({
       where: { id: idParam },

@@ -7,26 +7,19 @@ import {
   validatorCompiler,
 } from "fastify-type-provider-zod";
 import { fastifyBcrypt } from "fastify-bcrypt";
-import { fastifyStatic } from "@fastify/static";
 import { fastifyMultipart } from "@fastify/multipart";
 import { fastifyJwt } from "@fastify/jwt";
 import { handleError } from "./utils/error";
 import { userRoutes } from "./user/user.routes";
-import path from "node:path";
 import { taskRoutes } from "./task/task.routes";
+import path from "node:path";
 
 const app = fastify();
-
-app.register(fastifyStatic, {
-  root: path.resolve(__dirname, "..", "public", "images"),
-  prefix: "/photos/",
-});
 
 app.register(fastifyJwt, { secret: "mysecret", sign: { expiresIn: "1d" } });
 
 app.register(fastifyMultipart, {
   attachFieldsToBody: true,
-  limits: { files: 1, fileSize: 3000000 },
 });
 
 app.setSerializerCompiler(serializerCompiler);
@@ -52,4 +45,4 @@ app.register(taskRoutes);
 
 app
   .listen({ port: Number(process.env.PORT) })
-  .then(() => console.log(`API running on port ${process.env.PORT}`));
+  .then(() => console.log(`API running on port ${process.env.PORT} `));
