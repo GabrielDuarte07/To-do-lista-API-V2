@@ -1,4 +1,3 @@
-import { MultipartFile } from "@fastify/multipart";
 import { FastifyTypedInstance } from "../@types/fastifyTypedInstance";
 import { handleToken } from "../utils/headersToken";
 import { UserController } from "./user.controller";

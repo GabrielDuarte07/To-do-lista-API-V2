@@ -12,7 +12,6 @@ import { fastifyJwt } from "@fastify/jwt";
 import { handleError } from "./utils/error";
 import { userRoutes } from "./user/user.routes";
 import { taskRoutes } from "./task/task.routes";
-import path from "node:path";
 
 const app = fastify();
 

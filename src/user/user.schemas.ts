@@ -1,6 +1,5 @@
 import { MultipartFile } from "@fastify/multipart";
 import { z } from "zod";
-import { zfd } from "zod-form-data";
 
 export const userRequestSchema = z
   .object({
