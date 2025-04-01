@@ -112,8 +112,8 @@ export async function userRoutes(app: FastifyTypedInstance) {
     },
     async (request, reply) => {
       const { email, password } = request.body;
-      const token = await objUser.login(email, password);
-      return reply.status(200).send(token);
+      const objLogin = await objUser.login(email, password);
+      return reply.status(200).send(objLogin);
     },
   );
 

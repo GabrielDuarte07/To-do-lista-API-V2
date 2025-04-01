@@ -19,7 +19,7 @@ export interface UserControllerProps {
 
   photo(idParam: string, iduser: string, img?: MultipartFile): Promise<void>;
 
-  login(email: string, password: string): Promise<{ token: string }>;
+  login(email: string, password: string): Promise<{ token: string; id: string }>;
 
   update(
     idParam: string,

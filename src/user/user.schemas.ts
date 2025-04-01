@@ -21,6 +21,7 @@ export const userLoginSchema = z.object({
 
 export const userLoginReponnseSchema = z.object({
   token: z.string(),
+  id: z.string().uuid(),
 });
 
 export const userRequestPatchSchema = z

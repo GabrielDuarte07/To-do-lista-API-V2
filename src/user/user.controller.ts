@@ -13,7 +13,7 @@ export class UserController implements UserControllerProps {
     this.defaultProps = new ControllerProperties(app);
   }
 
-  async login(email: string, password: string): Promise<{ token: string }> {
+  async login(email: string, password: string): Promise<{ token: string; id: string }> {
     const findUser = await this.defaultProps.connection.user.findUnique({ where: { email } });
     if (!findUser) {
       throw new APIError("Login", "User not found", 404);
@@ -27,6 +27,7 @@ export class UserController implements UserControllerProps {
     const token = this.defaultProps.app.jwt.sign({ id: findUser.id });
     return {
       token,
+      id: findUser.id,
     };
   }
 
